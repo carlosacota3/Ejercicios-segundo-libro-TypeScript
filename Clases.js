@@ -1,12 +1,10 @@
 var Startup = /** @class */ (function () {
-    function Startup(texto) {
-        this.text = texto;
+    function Startup() {
     }
-    Startup.prototype.main = function () {
-        console.log(this.text);
+    Startup.main = function () {
+        console.log('Hola mundo');
         return 0;
     };
     return Startup;
 }());
-var s = new Startup("Hola mundo");
-s.main();
+Startup.main();
