@@ -1,10 +1,35 @@
-var Something = /** @class */ (function () {
-    function Something() {
-        Something.instances++;
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var FooBase = /** @class */ (function () {
+    function FooBase() {
     }
-    Something.instances = 0;
-    return Something;
+    return FooBase;
 }());
-var s1 = new Something();
-var s2 = new Something();
-console.log(Something.instances);
+// EFECTOS EN UNA INSTANCIA
+var foo = new FooBase();
+foo.x; //Ok
+foo.y; //Error: Private
+foo.z; //Error: Protected
+// EFECTOS EN UNA CLASE HIJA
+var FooChild = /** @class */ (function (_super) {
+    __extends(FooChild, _super);
+    function FooChild() {
+        var _this = _super.call(this) || this;
+        _this.x; //Ok
+        _this.y; //Error: private
+        _this.z; //Okay
+        return _this;
+    }
+    return FooChild;
+}(FooBase));
