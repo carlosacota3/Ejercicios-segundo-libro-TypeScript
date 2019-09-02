@@ -1,3 +1,9 @@
-var foo = () => ({
-    bar: 123
-});
+const { called } = new class {
+    count = 0;
+    called = () => {
+        this.count++;
+        console.log(`Called : ${this.count}`);
+    }
+};
+called();
+called();
