@@ -1,2 +1,2 @@
-import {a} from "./a";
+import var a = require("./a");
 var b = a;
