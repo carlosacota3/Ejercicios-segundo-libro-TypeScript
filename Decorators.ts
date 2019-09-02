@@ -1,15 +1,14 @@
-function StaticMethodDecorator(
+function ParameterDecorator(
     target: Function,
-    propertyKey: string | symbol, // El nombre del metodo statico
-    descriptor: TypedPropertyDescriptor<any>
+    propertyKey: string | symbol,
+    parameterIndex: number
 ) {
-    console.log("StaticMethodDecorator called on: ", target, propertyKey, descriptor);
+    console.log("ParameterDecorator called on: ", target, propertyKey, parameterIndex);
 }
-class StaticMethodDecoratorExample {
-    @StaticMethodDecorator
-    static staticMethod() {
+class ParameterDecoratorExample {
+    method(@ParameterDecorator param1: string, @ParameterDecorator param2: number) {
     }
 }
-StaticMethodDecorator called on: function StaticMethodDecoratorExample() {
 
-}
+ParameterDecorator called on: { method: [Function] } method 1
+ParameterDecorator called on: { method: [Function] } method 0
